@@ -35,4 +35,18 @@ class UsuarioRepo
         }
         return null;
     }
+
+    public function create(string $user, string $password): void
+    {
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $stmt = $this->db->prepare("INSERT INTO usuario (user, password) VALUES (?, ?)");
+        $stmt->execute([$user, $hashedPassword]);
+    }
+
+    public function updatePassword(int $id, string $newPassword): bool
+    {
+        $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+        $stmt = $this->db->prepare("UPDATE usuario SET password = ? WHERE id = ?");
+        return $stmt->execute([$hashedPassword, $id]);
+    }
 }
