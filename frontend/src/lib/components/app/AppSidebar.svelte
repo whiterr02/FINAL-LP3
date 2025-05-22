@@ -5,6 +5,7 @@
 	import Envios from 'lucide-svelte/icons/truck';
 	import Tractor from 'lucide-svelte/icons/tractor';
 	import Sparkles from 'lucide-svelte/icons/sparkles';
+	import HomeIcon from 'lucide-svelte/icons/home';
 	import CreditCard from 'lucide-svelte/icons/credit-card';
 	import LogOut from 'lucide-svelte/icons/log-out';
 	import BadgeCheck from 'lucide-svelte/icons/badge-check';
@@ -26,6 +27,12 @@
 
 	// Menu items.
 	const items: Item[] = $state([
+		{
+			title: 'Dashboard',
+			url: '/dashboard',
+			icon: HomeIcon,
+			active: false
+		},
 		{
 			title: 'Documentos',
 			url: '/documento',
